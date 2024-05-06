@@ -5,8 +5,8 @@ public enum AppMessage {
     /**
      *  SUCCESS
      */
-    DB_SUCCESS("SUCCESS", 2000, "Success."),
-    DB_SUCCESS_UPDATE("SUCCESS", 2000, "update success.");
+    SUCCESS("SUCCESS", 2000, "Success."),
+    SUCCESS_UPDATE("SUCCESS", 2000, "update success.");
 
 
     private int code;

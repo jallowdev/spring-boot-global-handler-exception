@@ -1,6 +1,8 @@
 package com.loumo.controllers;
 
+import com.loumo.commons.AppMessage;
 import com.loumo.controllers.dtos.VoidResponse;
+import com.loumo.controllers.dtos.requests.ProductRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,18 +23,19 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ProductController {
 
-    @PostMapping
+
+
+    /*@PostMapping
     @Operation(summary = "create product")
     @ApiResponse(responseCode = "200", description = "create product")
-    public ResponseEntity<VoidResponse> createUser(@RequestHeader HttpHeaders headers, @RequestBody @Valid UserRequestDto req) {
+    public ResponseEntity<VoidResponse> createUser(@RequestHeader HttpHeaders headers, @RequestBody @Valid ProductRequestDTO req) {
 
         log.info("### CREATE PRODUCT : {} ", req);
-        var session = sessionService.checkAndGetSessionByToken(headers);
         userService.createUser(session, req);
-        return new ResponseEntity<>(new OperationResponse(DiotaliMessage.DB_SUCCESS_CREATE), HttpStatus.OK);
-    }
+        return new ResponseEntity<>(new VoidResponse(AppMessage.SUCCESS), HttpStatus.OK);
+    }*/
 
-    @GetMapping
+   /* @GetMapping
     @Operation(summary = "liste des utilsateurs par partenaire")
     @ApiResponse(responseCode = "200", description = "liste des utilsateurs par partenaire")
     public ResponseObject<UserDetailsStatisticDTO> getUsers(@RequestHeader HttpHeaders headers,
@@ -44,5 +47,5 @@ public class ProductController {
     ) {
         LOG.info("### List User : ParentId : {} PHONE: {} ", parentId, phoneNumber);
         return new ResponseObject<>(DiotaliMessage.DB_SUCCESS, userService.getUsers(parentId, lastName, phoneNumber, page, size));
-    }
+    }*/
 }

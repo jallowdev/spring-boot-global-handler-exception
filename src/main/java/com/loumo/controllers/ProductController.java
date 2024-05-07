@@ -3,10 +3,8 @@ package com.loumo.controllers;
 import com.loumo.commons.AppMessage;
 import com.loumo.controllers.dtos.VoidResponse;
 import com.loumo.controllers.dtos.requests.ProductRequestDTO;
+import com.loumo.services.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,29 +21,21 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ProductController {
 
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
 
-    /*@PostMapping
-    @Operation(summary = "create product")
-    @ApiResponse(responseCode = "200", description = "create product")
-    public ResponseEntity<VoidResponse> createUser(@RequestHeader HttpHeaders headers, @RequestBody @Valid ProductRequestDTO req) {
-
-        log.info("### CREATE PRODUCT : {} ", req);
-        userService.createUser(session, req);
+    @PostMapping
+    @Operation(summary = "Create product")
+    @ApiResponse(responseCode = "200", description = "Create product.")
+    public ResponseEntity<VoidResponse> badRequest(@RequestHeader HttpHeaders headers, @RequestBody @Valid ProductRequestDTO request) {
+        log.info("# CREATE PRODUCT : {} ",request);
+        productService.createProduct(request);
         return new ResponseEntity<>(new VoidResponse(AppMessage.SUCCESS), HttpStatus.OK);
-    }*/
+    }
 
-   /* @GetMapping
-    @Operation(summary = "liste des utilsateurs par partenaire")
-    @ApiResponse(responseCode = "200", description = "liste des utilsateurs par partenaire")
-    public ResponseObject<UserDetailsStatisticDTO> getUsers(@RequestHeader HttpHeaders headers,
-                                                            @RequestParam(name = "parentId", required = false) Long parentId,
-                                                            @RequestParam(name = "lastName", required = false) String lastName,
-                                                            @RequestParam(name = "phoneNumber", required = false) String phoneNumber,
-                                                            @RequestParam(value = "page", required = false, defaultValue = "0") @Parameter(description = "Page") int page,
-                                                            @RequestParam(value = "size", required = false, defaultValue = "100") @Parameter(description = "Nombre element") int size
-    ) {
-        LOG.info("### List User : ParentId : {} PHONE: {} ", parentId, phoneNumber);
-        return new ResponseObject<>(DiotaliMessage.DB_SUCCESS, userService.getUsers(parentId, lastName, phoneNumber, page, size));
-    }*/
+
 }

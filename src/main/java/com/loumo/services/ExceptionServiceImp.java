@@ -12,6 +12,10 @@ public class ExceptionServiceImp implements ExceptionService{
    }
 
     public void notFound() {
-        throw new AppException("Bad request exception message", HttpStatus.BAD_REQUEST);
+        throw new AppException("Not found exception message", HttpStatus.NOT_FOUND);
+    }
+
+    public void internal() throws Exception {
+        throw new Exception("Internal Error");
     }
 }
